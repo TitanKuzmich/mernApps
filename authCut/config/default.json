@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "tiSai frontend network",
+  "mongoUri": "mongodb+srv://tiSai:1234@messengercluster.np9w9.mongodb.net/mern?retryWrites=true&w=majority"
+}
