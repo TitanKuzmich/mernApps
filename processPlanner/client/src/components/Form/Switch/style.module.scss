@@ -1,0 +1,52 @@
+@import "../../../scss/palette";
+
+.switchWrapper {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 20px;
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.switchCircle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid $rgbaColor11;
+  transition: 0.4s;
+  background: #fcfeff;
+  border-radius: 10px;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 1px;
+    bottom: 1px;
+    background-color: $rgbaColor3;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+}
+
+.switchCircleChecked {
+  background: $color4;
+  border: 1px solid $color4;
+  &:before {
+    transform: translateX(12px);
+    background-color: $color14;
+  }
+}

@@ -1,0 +1,16 @@
+.item{
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid black;
+
+  &--r{
+    background-color: yellow;
+  }
+
+  &--w{
+    background-color: green;
+  }
+}

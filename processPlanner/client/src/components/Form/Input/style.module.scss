@@ -1,0 +1,134 @@
+@import "../../../scss/palette";
+@import "../../../scss/vars";
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  *:focus {
+    outline: none;
+  }
+  :global(.error) {
+    position: absolute;
+    top: 40px;
+  }
+}
+
+.inputWrapperNoticesInline {
+  display: flex;
+  align-items: center;
+}
+
+.inputComponent {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: $color14;
+  border: 1px solid $rgbaColor5;
+  border-radius: $border-radius;
+  padding: 0 $input-padding;
+  display: flex;
+  align-items: center;
+
+  &.disabled {
+    background: $rgbaColor15;
+  }
+
+  &.withIcon {
+    padding: 0 15px;
+  }
+}
+
+.customIcon {
+  width: 18px;
+  height: 17px;
+  min-width: 18px;
+  min-height: 17px;
+  margin-right: 11px;
+  fill: $rgbaColor11;
+}
+
+.input {
+  border: 0;
+  width: 100%;
+  height: 100%;
+  color: $rgbaColor4;
+  background: transparent;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  padding-bottom: 1px;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  -moz-appearance: textfield;
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px $color14 inset;
+  }
+
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: #fff, 0 0 0 50px $color14 inset;
+    -webkit-text-fill-color: $rgbaColor4;
+  }
+
+  &.withTooltip {
+    padding-right: 13px;
+  }
+}
+
+// Errors
+.inputComponentError {
+  border: 1px solid $input-error-color;
+}
+
+// Placeholder
+.placeholderWrapper {
+  display: flex;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  margin-left: $input-padding;
+  height: 100%;
+  text-align: left;
+  pointer-events: none;
+  background: transparent;
+  z-index: 2;
+}
+
+.placeholderContainer {
+  height: 100%;
+  pointer-events: none;
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  max-width: calc(100% - 22px * 2);
+  background: transparent;
+  transition: 0.2s ease-in-out;
+  color: $input-placeholder-color;
+  white-space: nowrap;
+}
+
+.placeholderContainerFocused {
+  position: relative;
+  z-index: 2;
+  transform: translateY(-11px) translateX(-8px);
+  font-size: 11px;
+  line-height: 14px;
+  height: 15px;
+  text-overflow: clip;
+  padding: 0 2px;
+  background: linear-gradient(180deg, rgba(242, 244, 245, 0) 52%, $color2 55%);
+}

@@ -1,0 +1,56 @@
+.container{
+  padding: 20px;
+  min-height: 728px;
+}
+
+.algo-wrapper{
+  margin-top: 30px;
+
+  .stats{
+    font-size: 32px;
+    margin-top: 10px;
+    min-height: 40px;
+  }
+}
+
+.tact {
+  &-wrapper {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    margin-left: 28px;
+
+    .item{
+      border-top: 1px solid black;
+
+      &:last-child{
+        border-right: 1px solid black;
+      }
+    }
+  }
+}
+
+.task {
+  &-wrapper {
+    width: max-content;
+  }
+  &-string{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    &:first-child{
+      border-top: 1px solid black;
+    }
+  }
+  &-tacts{
+    display: flex;
+    align-items: center;
+  }
+}
+
+.tooltip{
+  font-size: 14px;
+  color: $color13;
+}

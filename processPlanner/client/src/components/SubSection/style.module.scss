@@ -1,0 +1,100 @@
+@import "../../scss/palette";
+
+$section-padding: 8px;
+
+.modalSection{
+  margin-bottom: 52px;
+
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+
+.modalSectionLabelWrapper {
+  margin-bottom: 12px;
+  font-size: 26px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $rgbaColor13;
+  align-items: center;
+  height: 39px;
+
+  &.marginTiny {
+    margin-bottom: 8px !important;
+  }
+
+  &.marginSmall {
+    margin-bottom: 12px !important;
+  }
+
+  &.marginEmpty {
+    margin-bottom: 0px !important;
+  }
+}
+
+.optionWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  align-items: center;
+  margin-bottom: 24px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &.threeColumns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.modalSectionLabelNoticed {
+  margin-bottom: 8px;
+}
+
+.modalSectionLabel {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 24px;
+  color: #000;
+  padding-left: $section-padding;
+
+  [data-tip] {
+    margin-left: 5px;
+  }
+}
+
+.modalSectionLabelContent {
+  color: #000;
+  font-size: 15px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: normal;
+
+  &.noText {
+    width: 100%;
+    padding-left: $section-padding;
+  }
+}
+
+.modalLabelNotices {
+  margin-bottom: 24px;
+}
+
+.modalSectionContainer {
+  padding: 0 $section-padding;
+
+  &.disabled {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+}
+
+.modalLabelContainer {
+  margin-bottom: 12px;
+  margin-top: 24px;
+}

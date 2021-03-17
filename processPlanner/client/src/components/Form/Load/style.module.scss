@@ -1,0 +1,59 @@
+.optionWrapper{
+  margin-bottom: 24px;
+
+  .label {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed grey;
+    border-radius: 4px;
+    padding: 10px 30px;
+    transition: border .4s ease;
+    cursor: pointer;
+    text-align: center;
+
+    .upload {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      outline: 0;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .title, i {
+      display: block;
+      color: grey;
+      transition: .4s color;
+    }
+
+    i {
+      display: block;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      border: 1px solid #000;
+
+      .title, i {
+        color: #000
+      }
+    }
+  }
+}
+

@@ -1,0 +1,132 @@
+@import "../../scss/palette";
+@import "../../scss/vars";
+
+.buttonWrapper {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 20px;
+  text-decoration: none;
+  cursor: pointer;
+  color: $color2;
+  white-space: nowrap;
+  justify-content: center;
+  outline: none;
+  border: none;
+  border-radius: $border-radius-second;
+  width: auto;
+  background: $color4;
+  user-select: none;
+
+  .loading {
+    position: relative;
+
+    .spinnerWrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .loadingText {
+      opacity: 0;
+    }
+  }
+
+  &.disabled {
+    background-color: $color3;
+    pointer-events: none;
+  }
+
+  &.inactive {
+    cursor: default;
+    background-color: rgba(51, 56, 66, 0.15) !important;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: $color23;
+  }
+  &:active {
+    background-color: $color24;
+  }
+
+  &.secondary {
+    background: $color2;
+    border: 1px solid $rgbaColor5;
+    color: $rgbaColor3;
+    &:hover {
+      background-color: $rgbaColor2;
+    }
+    &:active {
+      background-color: $rgbaColor1;
+    }
+    svg {
+      circle {
+        stroke: $rgbaColor5;
+      }
+    }
+  }
+}
+
+.rounded {
+  border-radius: 5em;
+}
+.tiny {
+  height: 30px;
+  font-size: 12px;
+}
+.small {
+  height: 32px;
+  font-size: 12px;
+}
+
+.big {
+  height: 48px;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  padding: 0 2.5em;
+  justify-content: center;
+}
+
+.link {
+  background: initial;
+  font-weight: 400;
+  border: none;
+  text-transform: initial;
+  color: $color4;
+}
+.isLoading {
+  pointer-events: none;
+  font-weight: bold;
+  border: none;
+  background: $rgbaColor11;
+
+  svg {
+    width: 22px;
+    circle {
+      stroke-width: 8px;
+      opacity: 0.8;
+    }
+  }
+}
+.expanded {
+  width: 100%;
+  justify-content: center;
+  margin-left: 0;
+  margin-top: 2em;
+}
+.cta {
+  background: $color4;
+  color: $color2;
+  border-radius: 40px;
+  justify-content: center;
+}
+.ghost {
+  background: $rgbaColor6;
+  justify-content: center;
+}

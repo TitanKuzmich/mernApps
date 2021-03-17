@@ -1,0 +1,202 @@
+@import "../../../scss/vars";
+@import "../../../scss/palette";
+
+@mixin hoverNoWrap {
+  &::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 35%, $color20 80%, $color20 100%) !important;
+  }
+}
+
+.dropDownWrapper {
+  position: relative;
+  width: 100%;
+
+  *:focus {
+    outline: none;
+  }
+  :global(.error) {
+    position: absolute;
+    top: 40px;
+  }
+}
+
+.dropDownMenu {
+  display: grid;
+  grid-template-columns: auto 37px;
+  width: 100%;
+  height: 40px;
+  background: #fcffff;
+  border: 1px solid rgba(51, 56, 66, 0.25);
+  border-radius: $border-radius;
+  &:first-child {
+    padding-left: $input-padding;
+  }
+
+  &.error {
+    border-color: $input-error-color;
+  }
+}
+
+.dropDownMenuReadonly {
+  cursor: pointer;
+}
+
+.dropDownWithIcon {
+  grid-template-columns: 29px auto 37px;
+  &:first-child {
+    padding-left: 15px;
+  }
+}
+
+.dropDownWithOptionsIcon {
+  grid-template-columns: auto 1fr 37px;
+  grid-column-gap: 8px;
+  &:first-child {
+    padding-left: 12px;
+  }
+}
+
+.valueIcon {
+  width: 18px;
+  height: 17px;
+  min-width: 18px;
+  min-height: 17px;
+  align-self: center;
+  fill: $rgbaColor11;
+}
+
+.valueOptionIcon {
+  align-self: center;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.spinner {
+  svg {
+    width: 20px;
+    height: 20px;
+    circle {
+      stroke: $rgbaColor12 !important;
+    }
+  }
+}
+
+.controlIcon {
+  width: 8px;
+  height: 8px;
+  fill: $rgbaColor3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(180deg);
+
+  &.controlClosed {
+    transform: rotate(0);
+  }
+
+  &.closeButton {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.input {
+  border: 0;
+  width: 100%;
+  color: $rgbaColor4;
+  background: transparent;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+}
+
+.placeholder {
+  color: $input-placeholder-color;
+}
+
+.readOnly {
+  cursor: pointer;
+}
+
+.disabled {
+  background: $color6;
+  pointer-events: none;
+}
+
+.dropDownListWrapper {
+  position: absolute;
+  width: 100%;
+  background: #fcffff;
+  box-shadow: 0px 10px 20px rgba(70, 93, 139, 0.1), 0px 0px 2px rgba(70, 93, 139, 0.3);
+  border-radius: 2px;
+  margin-top: 5px;
+  z-index: 2;
+  visibility: hidden;
+}
+
+.openMenu {
+  visibility: initial;
+}
+
+.dropDownList {
+  list-style-type: none;
+  padding: 4px 0;
+  max-height: 390px;
+  overflow-y: auto;
+}
+
+.menuItem {
+  cursor: pointer;
+  width: 100%;
+  padding: 7px $input-padding;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background: $color20;
+    .nowrap {
+      &::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 35%, $color20 80%, $color20 100%) !important;
+      }
+    }
+  }
+}
+
+.contentWithIcon {
+  margin-left: 8px;
+}
+
+.menuItem:global.selected {
+  background: $color20;
+  div > div {
+    @include hoverNoWrap;
+  }
+}
+
+.menuItem:global.disabled {
+  opacity: 0.4;
+}
+
+.menuItem:global.icon {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.row {
+  width: 100%;
+}
+.wrapperSearch {
+  width: 100%;
+}

@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://tiSai:1234@messengercluster.np9w9.mongodb.net/firstLab?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}
