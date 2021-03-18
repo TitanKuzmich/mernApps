@@ -7,11 +7,22 @@ import Button from "../../Button";
 
 import style from "./style.module.scss";
 
+import {useHttp} from "../../../hooks/http.hook";
+
 import {generate} from "../../../utils/helper";
-import {addMainData, algoProcess} from "../../../redux/actions/changeData";
+import {
+    changeMainData,
+    changeFifoData,
+    changeStrfData,
+    changeFifoStats,
+    changeStrfStats
+} from "../../../redux/actions/changeData";
+import {useMessage} from "../../../hooks/message.hook";
 
 const Generate = () => {
 
+    const {request, loading, error, clearError} = useHttp();
+    const message = useMessage()
     const dispatch = useDispatch();
 
     const withTrace = useSelector(({changeData})=> changeData.withTrace);
@@ -21,9 +32,24 @@ const Generate = () => {
 
     const onGenerate = async () => {
         let rawData = await generate(data.procNums);
-        dispatch(addMainData(rawData));
-        dispatch(algoProcess(rawData, withTrace));
+        try {
+            const processed = await request('/api/data/add', 'POST', {name: data.name, data: rawData, withTrace: withTrace});
+
+            message(processed.message)
+            dispatch(changeMainData(rawData));
+            dispatch(changeFifoData(processed.fifoData));
+            dispatch(changeFifoStats(processed.fifoStats));
+            dispatch(changeStrfData(processed.strfData));
+            dispatch(changeStrfStats(processed.strfStats));
+        } catch(e) {
+
+        }
     }
+
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
 
     useEffect(() => {
         if (data.name.length > 1 && data.procNums > 0) {

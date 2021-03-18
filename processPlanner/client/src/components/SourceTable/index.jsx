@@ -3,23 +3,23 @@ import {useSelector} from "react-redux";
 import {useUpdateEffect} from "react-use";
 
 const SourceTable = () => {
-    const sourceData = useSelector(({changeData}) => changeData.data);
-    const [dataForTable, setDataForTable] = useState([]);
-
-    const paintSourceTable = () => {
-        const source = Object.values(sourceData);
-
-        setDataForTable(source[source.length - 1]);
-    }
-
-    useUpdateEffect(()=>{
-        paintSourceTable();
-
-        if(dataForTable.length > 200){
-            console.log("Source data");
-            console.log(sourceData);
-        }
-    }, [sourceData])
+    const dataForTable = useSelector(({changeData}) => changeData.data);
+    // const [dataForTable, setDataForTable] = useState([]);
+    //
+    // const paintSourceTable = () => {
+    //     const source = Object.values(sourceData);
+    //
+    //     setDataForTable(source[source.length - 1]);
+    // }
+    //
+    // useUpdateEffect(()=>{
+    //     paintSourceTable();
+    //
+    //     if(dataForTable.length > 200){
+    //         console.log("Source data");
+    //         console.log(sourceData);
+    //     }
+    // }, [sourceData])
 
     return (
         <div className="input-data-wrapper">
@@ -35,7 +35,7 @@ const SourceTable = () => {
                 </div>
             </div>
             <div className="input-data-cell-wrapper">
-                {dataForTable.length > 0 && dataForTable.length <= 200 && dataForTable.sort((a, b) => a["id"] - b["id"]).map((data, index)=>(
+                {dataForTable.length > 0 && dataForTable.length <= 200 && dataForTable.map((data, index)=>(
                     <div className="input-data-string" key={`${data}_${index}`}>
                         <div className="input-data-block">{data["id"]}</div>
                         <div className="input-data-block">{data["readyTime"]}</div>

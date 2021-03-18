@@ -1,10 +1,12 @@
 import {dataManip} from "../actions/changeData";
 
 const initialState = {
-  data:{},
   withTrace:false,
+  data:[],
   fifoData:[],
-  strfData:[]
+  fifoStats: {},
+  strfData:[],
+  strfStats:{},
 }
 
 const changeData = (state = initialState, action) => {
@@ -17,10 +19,7 @@ const changeData = (state = initialState, action) => {
     case dataManip.CHANGE_MAIN_DATA:
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.payload.id]: action.payload.values
-        }
+        data: action.payload
       }
     case dataManip.CHANGE_FIFO_DATA:
       return {
@@ -31,6 +30,16 @@ const changeData = (state = initialState, action) => {
       return {
         ...state,
         strfData: action.payload
+      }
+    case dataManip.CHANGE_FIFO_STATS:
+      return {
+        ...state,
+        fifoStats: action.payload
+      }
+    case dataManip.CHANGE_STRF_STATS:
+      return {
+        ...state,
+        strfStats: action.payload
       }
     default:
       return state;

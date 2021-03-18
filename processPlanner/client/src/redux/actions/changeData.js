@@ -6,7 +6,9 @@ export const dataManip = {
   CHANGE_WITH_TRACE: "CHANGE_WITH_TRACE",
   CHANGE_MAIN_DATA: "CHANGE_MAIN_DATA",
   CHANGE_FIFO_DATA: "CHANGE_FIFO_DATA",
-  CHANGE_STRF_DATA: "CHANGE_STRF_DATA"
+  CHANGE_FIFO_STATS: "CHANGE_FIFO_STATS",
+  CHANGE_STRF_DATA: "CHANGE_STRF_DATA",
+  CHANGE_STRF_STATS: "CHANGE_STRF_STATS"
 }
 
 export const changeWithTrace = (withTrace) => ({
@@ -14,45 +16,27 @@ export const changeWithTrace = (withTrace) => ({
   payload: withTrace,
 })
 
-const changeMainData = (data) => ({
+export const changeMainData = (sourceData) => ({
   type: dataManip.CHANGE_MAIN_DATA,
-  payload: data,
+  payload: sourceData,
 })
 
-export const addMainData = data => {
-  return async (dispatch) => {
-    try {
-      let mainDataItem = [];
-      mainDataItem.id = uuidv4();
-      mainDataItem.values = data;
-
-      dispatch(changeMainData(mainDataItem));
-    } catch (error) {
-
-    }
-  }
-}
-
-const changeFifoData = (data) => ({
+export const changeFifoData = (fifoData) => ({
   type: dataManip.CHANGE_FIFO_DATA,
-  payload: data,
+  payload: fifoData,
 })
 
-const changeStrfData = (data) => ({
+export const changeFifoStats = (fifoStats) => ({
+  type: dataManip.CHANGE_FIFO_DATA,
+  payload: fifoStats,
+})
+
+export const changeStrfData = (strfData) => ({
   type: dataManip.CHANGE_STRF_DATA,
-  payload: data,
+  payload: strfData,
 })
 
-export const algoProcess = (data, withTrace) => {
-  return async (dispatch) => {
-    try {
-      let fifoData = processArray(fifo(data), withTrace);
-      dispatch(changeFifoData(fifoData));
-
-      let strfData = processArray(strf(data), withTrace);
-      dispatch(changeStrfData(strfData));
-    } catch (error) {
-
-    }
-  }
-}
+export const changeStrfStats = (strfStats) => ({
+  type: dataManip.CHANGE_STRF_DATA,
+  payload: strfStats,
+})

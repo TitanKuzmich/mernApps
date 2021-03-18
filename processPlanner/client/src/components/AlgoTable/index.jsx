@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import classNames from "classnames";
-import {calcStats} from "../../utils/helper";
+// import {calcStats} from "../../utils/helper";
 
 const AlgoTable = ({name, dataToRender}) => {
     const templateNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "...", "m"]
@@ -80,7 +80,7 @@ const AlgoTable = ({name, dataToRender}) => {
                 </div>
             </div>
             <div className="stats">
-                {(dataToRender && dataToRender.length > 0) && calcStats(dataToRender)}
+                {/*{(dataToRender && dataToRender.length > 0) && calcStats(dataToRender)}*/}
             </div>
         </div>
     );

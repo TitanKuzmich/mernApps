@@ -1,14 +1,27 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addMainData, algoProcess} from "../../../redux/actions/changeData";
 
 import Subsection from "../../SubSection";
 import Button from "../../Button";
 
 import style from "./style.module.scss";
 
+import {useHttp} from "../../../hooks/http.hook";
+
+import {generate} from "../../../utils/helper";
+import {
+    changeMainData,
+    changeFifoData,
+    changeStrfData,
+    changeFifoStats,
+    changeStrfStats
+} from "../../../redux/actions/changeData";
+import {useMessage} from "../../../hooks/message.hook";
+
 const Load = () => {
 
+    const {request, loading, error, clearError} = useHttp();
+    const message = useMessage()
     const withTrace = useSelector(({changeData})=> changeData.withTrace);
 
     const [data, setData] = useState([]);
@@ -18,9 +31,19 @@ const Load = () => {
 
     const [isValid, setValid] = useState(false);
 
-    const onUpload = () => {
-        dispatch(addMainData(data));
-        dispatch(algoProcess(data, withTrace));
+    const onUpload = async () => {
+        try {
+            const processed = await request('/api/data/add', 'POST', {name, data, withTrace});
+
+            message(processed.message)
+            dispatch(changeMainData(data));
+            dispatch(changeFifoData(processed.fifoData));
+            dispatch(changeFifoStats(processed.fifoStats));
+            dispatch(changeStrfData(processed.strfData));
+            dispatch(changeStrfStats(processed.strfStats));
+        } catch(e) {
+
+        }
     }
 
     useEffect(() => {

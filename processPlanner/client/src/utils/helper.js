@@ -25,6 +25,8 @@ export const generate = async (tasksNum) => {
             mainArr.push(data);
         }
 
+        mainArr.sort((a, b) => a["id"] - b["id"])
+
         resolve(mainArr);
     }))
 }
