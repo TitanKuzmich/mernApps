@@ -54,6 +54,11 @@ const Load = () => {
         }
     }, [data])
 
+    useEffect(() => {
+        message(error)
+        clearError()
+    }, [error, message, clearError])
+
     const uploadRef = useRef(null);
 
     const loadFileProcess = () => {        // функция асинхронная
@@ -69,7 +74,7 @@ const Load = () => {
             let loadData = [];
             let boof = reader.result.split("\n");          // разбиваем текст в файле на масив строк
             for (let i = 0; i < boof.length; i++) {        // пройтись по каждой строке
-                let data = [];                               // создать бач
+                let data = {};                               // создать бач
                 let t = boof[i].split(", ")                  // разбить строку на подстроки
                 t[3] = t[3].split(";")[0]                    // удалить символ ;
                 data.id = Number(t[0]);                      // добавить в него id

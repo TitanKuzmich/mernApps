@@ -1,25 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import {useUpdateEffect} from "react-use";
 
 const SourceTable = () => {
     const dataForTable = useSelector(({changeData}) => changeData.data);
-    // const [dataForTable, setDataForTable] = useState([]);
-    //
-    // const paintSourceTable = () => {
-    //     const source = Object.values(sourceData);
-    //
-    //     setDataForTable(source[source.length - 1]);
-    // }
-    //
-    // useUpdateEffect(()=>{
-    //     paintSourceTable();
-    //
-    //     if(dataForTable.length > 200){
-    //         console.log("Source data");
-    //         console.log(sourceData);
-    //     }
-    // }, [sourceData])
+
+    useUpdateEffect(()=>{
+        if(dataForTable.length > 200){
+            console.log("Source data");
+            console.log(dataForTable);
+        }
+    }, [dataForTable])
 
     return (
         <div className="input-data-wrapper">

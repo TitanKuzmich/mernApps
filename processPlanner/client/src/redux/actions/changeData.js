@@ -1,7 +1,3 @@
-import { v4 as uuidv4 } from "uuid"
-import {processArray} from "../../utils/helper";
-import {fifo, strf} from "../../utils/algorithms";
-
 export const dataManip = {
   CHANGE_WITH_TRACE: "CHANGE_WITH_TRACE",
   CHANGE_MAIN_DATA: "CHANGE_MAIN_DATA",
@@ -27,7 +23,7 @@ export const changeFifoData = (fifoData) => ({
 })
 
 export const changeFifoStats = (fifoStats) => ({
-  type: dataManip.CHANGE_FIFO_DATA,
+  type: dataManip.CHANGE_FIFO_STATS,
   payload: fifoStats,
 })
 
@@ -37,6 +33,6 @@ export const changeStrfData = (strfData) => ({
 })
 
 export const changeStrfStats = (strfStats) => ({
-  type: dataManip.CHANGE_STRF_DATA,
+  type: dataManip.CHANGE_STRF_STATS,
   payload: strfStats,
 })

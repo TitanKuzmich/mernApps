@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames";
-// import {calcStats} from "../../utils/helper";
+import {useUpdateEffect} from "react-use";
 
-const AlgoTable = ({name, dataToRender}) => {
+const AlgoTable = ({name, data, stats}) => {
+    const [dataToRender, setDataToRender] = useState([]);
+
     const templateNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "...", "m"]
 
     const cellValue = (index, value) => {
@@ -20,12 +22,15 @@ const AlgoTable = ({name, dataToRender}) => {
         }
     }
 
-    useEffect(() => {
-        if (dataToRender.length > 200){
+    useUpdateEffect(() => {
+        if (data && data.length > 200){
             console.log(name);
-            console.log(dataToRender);
+            console.log(data);
         }
-    }, [dataToRender])
+        else {
+            setDataToRender(data)
+        }
+    }, [data])
 
     return (
         <div className="algo-wrapper">
@@ -80,6 +85,12 @@ const AlgoTable = ({name, dataToRender}) => {
                 </div>
             </div>
             <div className="stats">
+                <div className="stats-item">
+                    Среднее время ожидания: {Object.values(stats)[0]}
+                </div>
+                <div className="stats-item">
+                    Среднее время работы: {Object.values(stats)[1]}
+                </div>
                 {/*{(dataToRender && dataToRender.length > 0) && calcStats(dataToRender)}*/}
             </div>
         </div>

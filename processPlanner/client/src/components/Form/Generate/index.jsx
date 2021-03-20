@@ -22,7 +22,7 @@ import {useMessage} from "../../../hooks/message.hook";
 const Generate = () => {
 
     const {request, loading, error, clearError} = useHttp();
-    const message = useMessage()
+    const message = useMessage();
     const dispatch = useDispatch();
 
     const withTrace = useSelector(({changeData})=> changeData.withTrace);
